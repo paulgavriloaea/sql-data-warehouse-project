@@ -7,7 +7,13 @@ for some reason the MySQL workbench wouldnt allow me to load data in this manner
 
 ---------------------------------------------------------------------
 */
-
+TRUNCATE TABLE crm_sales_details;
+TRUNCATE TABLE crm_cust_info;
+TRUNCATE TABLE crm_prd_info;
+TRUNCATE TABLE erp_cust_az12;
+TRUNCATE TABLE erp_loc_a101;
+TRUNCATE TABLE erp_px_cat_g1v2;
+  
 LOAD DATA LOCAL INFILE '/Users/paul/Desktop/MyMLandDataScienceJourney/DataAnalyst-course/Baraa_SQL_Ultimate_course/sql-data-warehouse-project/datasets/source_crm/sales_details.csv'
 INTO TABLE crm_sales_details
 FIELDS TERMINATED BY ',' -- column separator
