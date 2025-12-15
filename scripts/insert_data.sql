@@ -7,6 +7,10 @@ for some reason the MySQL workbench wouldnt allow me to load data in this manner
 
 ---------------------------------------------------------------------
 */
+
+USE DataWarehouse_bronze;
+
+
 TRUNCATE TABLE crm_sales_details;
 TRUNCATE TABLE crm_cust_info;
 TRUNCATE TABLE crm_prd_info;
