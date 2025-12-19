@@ -11,9 +11,6 @@ If the DBs exist already the script drops and recreates them.
 
 */
 
-USE master;
-
-
 DROP DATABASE IF EXISTS DataWarehouse;
 DROP DATABASE IF EXISTS DataWarehouse_bronze;
 DROP DATABASE IF EXISTS DataWarehouse_silver;
