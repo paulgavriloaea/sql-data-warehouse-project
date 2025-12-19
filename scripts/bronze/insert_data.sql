@@ -6,7 +6,7 @@ I had to do it via the terminal using the command mysql --local-infile=1 -u root
 for some reason the MySQL workbench wouldnt allow me to load data in this manner.
 
 Alternatively:
-mysql --local-infile=1 -u root -p < insert_data.sql
+mysql --local-infile=1 -u root -p
 
 ---------------------------------------------------------------------
 */
