@@ -88,3 +88,20 @@ SELECT
 	END AS sls_price
 FROM crm_sales_details;
 
+
+TRUNCATE TABLE DataWarehouse_silver.erp_cust_az12;
+
+INSERT INTO DataWarehouse_silver.erp_cust_az12(CID, bdate,gen)
+
+SELECT
+CASE WHEN CID LIKE 'NAS%' THEN SUBSTRING(CID,4,LENGTH(CID))
+	ELSE CID
+END AS CID,
+CASE WHEN bdate > NOW() THEN NULL
+	ELSE bdate
+END AS bdate,
+CASE WHEN UPPER(TRIM(gen)) IN ('F', 'FEMALE') THEN 'Female'
+	 WHEN UPPER(TRIM(gen)) IN ('M', 'MALE') THEN 'Male'
+     ELSE 'n/a'
+END AS gen
+FROM DataWarehouse_bronze.erp_cust_az12;
