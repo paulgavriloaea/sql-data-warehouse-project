@@ -1,7 +1,3 @@
-SET sql_mode = ''; -- temp. disables strict mode 
-
-USE DataWarehouse_bronze;
-  
 -- helps me remove duplicate entries and focuses on the most recent entry for a given cst_id
 -- also trims white spaces
 -- changes some single lettered values to full on words
