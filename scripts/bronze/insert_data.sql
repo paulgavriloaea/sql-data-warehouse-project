@@ -52,18 +52,18 @@ INTO TABLE erp_cust_az12
 FIELDS TERMINATED BY ',' -- column separator
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
-(CID,BDATE,GEN);
+(cid,bdate,gen);
 
 LOAD DATA LOCAL INFILE '/Users/paul/Desktop/MyMLandDataScienceJourney/DataAnalyst-course/Baraa_SQL_Ultimate_course/sql-data-warehouse-project/datasets/source_erp/LOC_A101.csv'
 INTO TABLE erp_loc_a101
 FIELDS TERMINATED BY ',' -- column separator
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
-(CID,CNTRY);
+(cid,cntry);
 
 LOAD DATA LOCAL INFILE '/Users/paul/Desktop/MyMLandDataScienceJourney/DataAnalyst-course/Baraa_SQL_Ultimate_course/sql-data-warehouse-project/datasets/source_erp/PX_CAT_G1V2.csv'
 INTO TABLE erp_px_cat_g1v2
 FIELDS TERMINATED BY ',' -- column separator
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
-(ID,CAT,SUBCAT,MAINTENANCE);
+(id,cat,subcat,maintenance);
