@@ -118,3 +118,18 @@ CASE WHEN TRIM(cntry) = 'DE' THEN 'Germany'
      ELSE TRIM(cntry)
 END AS cntry
 FROM DataWarehouse_bronze.erp_loc_a101;
+
+TRUNCATE DataWarehouse_silver.erp_px_cat_g1v2;
+
+INSERT INTO DataWarehouse_silver.erp_px_cat_g1v2(id, cat, subcat, maintenance)
+
+SELECT 
+id,
+cat,
+subcat,
+CASE WHEN TRIM(maintenance) LIKE 'Y%' THEN 'Yes'
+	 WHEN TRIM(maintenance) LIKE 'N%' THEN 'No'
+     ELSE 'n/a'
+END maintenance
+FROM DataWarehouse_bronze.erp_px_cat_g1v2;
+
