@@ -106,7 +106,7 @@ CASE WHEN UPPER(TRIM(gen)) IN ('F', 'FEMALE') THEN 'Female'
 END AS gen
 FROM DataWarehouse_bronze.erp_cust_az12;
 
-TRUNCATE DataWarehouse_silver.erp_loc_a101;
+TRUNCATE TABLE DataWarehouse_silver.erp_loc_a101;
 
 INSERT INTO DataWarehouse_silver.erp_loc_a101 (cid,cntry)
 
@@ -119,7 +119,7 @@ CASE WHEN TRIM(cntry) = 'DE' THEN 'Germany'
 END AS cntry
 FROM DataWarehouse_bronze.erp_loc_a101;
 
-TRUNCATE DataWarehouse_silver.erp_px_cat_g1v2;
+TRUNCATE TABLE DataWarehouse_silver.erp_px_cat_g1v2;
 
 INSERT INTO DataWarehouse_silver.erp_px_cat_g1v2(id, cat, subcat, maintenance)
 
