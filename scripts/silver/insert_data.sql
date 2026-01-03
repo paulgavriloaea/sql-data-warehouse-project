@@ -25,7 +25,9 @@ FROM(
 SELECT
 *,
 ROW_NUMBER() OVER (PARTITION BY cst_id ORDER BY cst_create_date DESC) AS flag_last
-FROM crm_cust_info)t
+FROM DataWarehouse_bronze.crm_cust_info
+WHERE cst_id IS NOT NULL AND cst_id != 0
+	)t
 WHERE flag_last=1;
 
 TRUNCATE TABLE DataWarehouse_silver.crm_prd_info;
@@ -52,7 +54,7 @@ SELECT
         INTERVAL 1 DAY
     ) AS DATE
 ) AS prd_end_dt
-FROM crm_prd_info;
+FROM DataWarehouse_bronze.crm_prd_info;
 
 
 TRUNCATE TABLE DataWarehouse_silver.crm_sales_details;
@@ -82,7 +84,7 @@ SELECT
 	CASE WHEN sls_price IS NULL or sls_price<=0 THEN sls_sales/NULLIF(sls_quantity,0)
 		ELSE sls_price
 	END AS sls_price
-FROM crm_sales_details;
+FROM DataWarehouse_bronze.crm_sales_details;
 
 
 TRUNCATE TABLE DataWarehouse_silver.erp_cust_az12;
