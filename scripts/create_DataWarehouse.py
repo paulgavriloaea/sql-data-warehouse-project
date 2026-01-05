@@ -13,7 +13,7 @@ print(f"\n=== Running initialization: {init_script.name} ===")
 start = time.time()
 
 result = subprocess.run(
-    ["mysql", "-u", "--local-infile=1", "root", "-p", "-e", f"SOURCE {init_script};"],
+    ["mysql", "--local-infile=1", "-u", "root", "-p", "-e", f"SOURCE {init_script};"],
     capture_output=True,
     text=True
 )
