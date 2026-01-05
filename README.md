@@ -50,6 +50,9 @@ Develop SQL-based analytics to deliver detailed insights into:
 - **Product Performance**
 - **Sales Trends**
 
+## 📂 Repository Instructions
+
+To construct the Data Warehouse easily, run the create_DataWarehouse.py python script inside the scripts/ directory.
 
 ## 📂 Repository Structure
 ```
