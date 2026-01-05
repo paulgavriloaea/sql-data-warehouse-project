@@ -69,10 +69,12 @@ data-warehouse-project/
 │   ├── naming-conventions.md           # Consistent naming guidelines for tables, columns, and files
 │
 ├── scripts/                            # SQL scripts for ETL and transformations
+│   ├── init_database.sql               # SQL for creating the structure of the DataWarehouse
+│   ├── create_DataWarehouse.py         # python script used to run all the internal SQL scripts in bronze/ silver/ and gold/ directories.
+│   ├── data_checks.sql                 # SQL script containing  some queries I used to test the quality of the loaded data, this script is not actively used by the DataWarehouse.
 │   ├── bronze/                         # Scripts for extracting and loading raw data
 │   ├── silver/                         # Scripts for cleaning and transforming data
 │   ├── gold/                           # Scripts for creating analytical models
-│
 ├── tests/                              # Test scripts and quality files
 │
 ├── README.md                           # Project overview and instructions
