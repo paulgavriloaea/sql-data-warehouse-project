@@ -1,10 +1,11 @@
 # Calling this python script automates the entire DataWarehouse building process
-
+import getpass
 import subprocess
 import time
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
+mysql_password = getpass.getpass("Enter MySQL password: ")
 
 # Order of layers
 layers = ["bronze", "silver", "gold"]
@@ -15,7 +16,7 @@ print(f"\n=== Running initialization: {init_script.name} ===")
 start = time.time()
 
 result = subprocess.run(
-    ["mysql", "--local-infile=1", "-u", "root", "-p", "-e", f"SOURCE {init_script};"],
+    ["mysql", "--local-infile=1", "-u", "root", f"-p{mysql_password}", "-e", f"SOURCE {init_script};"],
     capture_output=True,
     text=True
 )
@@ -40,7 +41,7 @@ for layer in layers:
         start = time.time()
 
         result = subprocess.run(
-            ["mysql", "--local-infile=1", "-u", "root", "-p", "-e", f"SOURCE {sql_file};"],
+            ["mysql", "--local-infile=1", "-u", "root", f"-p{mysql_password}", "-e", f"SOURCE {sql_file};"],
             capture_output=True,
             text=True
         )
