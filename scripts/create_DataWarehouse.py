@@ -1,0 +1,32 @@
+import subprocess
+import time
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+SCRIPTS_DIR = BASE_DIR / "scripts"
+
+# Order of layers
+layers = ["bronze", "silver", "gold"]
+
+for layer in layers:
+    layer_dir = SCRIPTS_DIR / layer
+    sql_files = sorted(layer_dir.glob("*.sql"))  # sorted alphabetically
+    
+    print(f"\n=== Running {layer.upper()} layer scripts ===")
+    
+    for sql_file in sql_files:
+        print(f"\nRunning {sql_file.name}")
+        start = time.time()
+
+        result = subprocess.run(
+            ["mysql", "-u", "root", "-p", "-e", f"SOURCE {sql_file};"],
+            capture_output=True,
+            text=True
+        )
+
+        if result.returncode != 0:
+            print("❌ ERROR:")
+            print(result.stderr)
+            exit(1)
+
+        print(f"✅ Completed in {int(time.time() - start)} seconds")
