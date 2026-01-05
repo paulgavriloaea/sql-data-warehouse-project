@@ -1,3 +1,5 @@
+-- Calling this python script automates the entire DataWarehouse building process
+
 import subprocess
 import time
 from pathlib import Path
