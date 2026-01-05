@@ -3,12 +3,12 @@
 **Inspired by DataWithBaraa, the original project from Baraa was built around SQL server, I adapted it to MySQL (working on MacOS)**
 
 Welcome to the **Data Warehouse and Analytics Project** repository! 🚀  
-This project demonstrates a comprehensive data warehousing and analytics solution, from building a data warehouse to generating actionable insights. Designed as a portfolio project, it highlights industry best practices in data engineering and analytics.
+This project demonstrates a comprehensive data warehousing and analytics solution, from building a data warehouse to generating actionable insights. 
 
 ---
 ## 🏗️ Data Architecture
 
-The data architecture for this project follows Medallion Architecture **Bronze**, **Silver**, and **Gold** layers:
+The data architecture for this project follows a Medallion Architecture: **Bronze**, **Silver**, and **Gold** layers:
 ![Data Architecture](https://github.com/paulgavriloaea/sql-data-warehouse-project/blob/main/docs/data_architecture.png)
 
 1. **Bronze Layer**: Stores raw data as-is from the source systems. Data is ingested from CSV Files into MySQL Database.
@@ -50,6 +50,9 @@ Develop SQL-based analytics to deliver detailed insights into:
 - **Product Performance**
 - **Sales Trends**
 
+## 📂 Repository Instructions
+
+To construct the Data Warehouse easily, run the create_DataWarehouse.py python script inside the scripts/ directory.
 
 ## 📂 Repository Structure
 ```
@@ -66,10 +69,12 @@ data-warehouse-project/
 │   ├── naming-conventions.md           # Consistent naming guidelines for tables, columns, and files
 │
 ├── scripts/                            # SQL scripts for ETL and transformations
+│   ├── init_database.sql               # SQL for creating the structure of the DataWarehouse
+│   ├── create_DataWarehouse.py         # python script used to run all the internal SQL scripts in bronze/ silver/ and gold/ directories.
+│   ├── data_checks.sql                 # SQL script containing  some queries I used to test the quality of the loaded data, this script is not actively used by the DataWarehouse.
 │   ├── bronze/                         # Scripts for extracting and loading raw data
 │   ├── silver/                         # Scripts for cleaning and transforming data
 │   ├── gold/                           # Scripts for creating analytical models
-│
 ├── tests/                              # Test scripts and quality files
 │
 ├── README.md                           # Project overview and instructions
