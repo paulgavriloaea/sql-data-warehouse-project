@@ -8,6 +8,26 @@ SCRIPTS_DIR = BASE_DIR / "scripts"
 # Order of layers
 layers = ["bronze", "silver", "gold"]
 
+# 1️⃣ Run initialization script first
+init_script = SCRIPTS_DIR / "init_database.sql"
+print(f"\n=== Running initialization: {init_script.name} ===")
+start = time.time()
+
+result = subprocess.run(
+    ["mysql", "-u", "root", "-p", "-e", f"SOURCE {init_script};"],
+    capture_output=True,
+    text=True
+)
+
+if result.returncode != 0:
+    print("❌ ERROR in init_database.sql")
+    print(result.stderr)
+    exit(1)
+
+print(f"✅ Initialization completed in {int(time.time() - start)} seconds")
+
+# 2️⃣ Loop through Bronze, Silver, Gold layers
+
 for layer in layers:
     layer_dir = SCRIPTS_DIR / layer
     sql_files = sorted(layer_dir.glob("*.sql"))  # sorted alphabetically
