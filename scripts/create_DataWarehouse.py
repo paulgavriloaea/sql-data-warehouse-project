@@ -13,7 +13,7 @@ print(f"\n=== Running initialization: {init_script.name} ===")
 start = time.time()
 
 result = subprocess.run(
-    ["mysql", "-u", "root", "-p", "-e", f"SOURCE {init_script};"],
+    ["mysql", "-u", "--local-infile=1", "root", "-p", "-e", f"SOURCE {init_script};"],
     capture_output=True,
     text=True
 )
@@ -38,7 +38,7 @@ for layer in layers:
         start = time.time()
 
         result = subprocess.run(
-            ["mysql", "-u", "root", "-p", "-e", f"SOURCE {sql_file};"],
+            ["mysql", "--local-infile=1", "-u", "root", "-p", "-e", f"SOURCE {sql_file};"],
             capture_output=True,
             text=True
         )
