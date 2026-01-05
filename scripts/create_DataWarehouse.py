@@ -3,13 +3,12 @@ import time
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
-SCRIPTS_DIR = BASE_DIR / "scripts"
 
 # Order of layers
 layers = ["bronze", "silver", "gold"]
 
 # 1️⃣ Run initialization script first
-init_script = SCRIPTS_DIR / "init_database.sql"
+init_script = BASE_DIR / "init_database.sql"
 print(f"\n=== Running initialization: {init_script.name} ===")
 start = time.time()
 
@@ -29,7 +28,7 @@ print(f"✅ Initialization completed in {int(time.time() - start)} seconds")
 # 2️⃣ Loop through Bronze, Silver, Gold layers
 
 for layer in layers:
-    layer_dir = SCRIPTS_DIR / layer
+    layer_dir = BASE_DIR / layer
     sql_files = sorted(layer_dir.glob("*.sql"))  # sorted alphabetically
     
     print(f"\n=== Running {layer.upper()} layer scripts ===")
