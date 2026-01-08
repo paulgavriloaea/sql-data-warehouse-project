@@ -109,14 +109,19 @@ TRUNCATE TABLE DataWarehouse_silver.erp_loc_a101;
 
 INSERT INTO DataWarehouse_silver.erp_loc_a101 (cid,cntry)
 
-SELECT
-REPLACE(cid,'-','') cid,
-CASE WHEN TRIM(cntry) = 'DE' THEN 'Germany'
-	 WHEN TRIM(cntry) IN ('US', 'USA') THEN 'United States'
-     WHEN TRIM(cntry) = '' OR cntry IS NULL THEN 'n/a'
-     ELSE TRIM(cntry)
-END AS cntry
+SELECT DISTINCT
+  CASE 
+    WHEN UPPER(TRIM(REPLACE(REPLACE(REPLACE(cntry, '\t', ''), '\n', ''), '\r', ''))) = 'DE' 
+         THEN 'Germany'
+    WHEN UPPER(TRIM(REPLACE(REPLACE(REPLACE(cntry, '\t', ''), '\n', ''), '\r', ''))) IN ('US', 'USA') 
+         THEN 'United States'
+    WHEN cntry IS NULL 
+         OR TRIM(REPLACE(REPLACE(REPLACE(cntry, '\t', ''), '\n', ''), '\r', '')) = '' 
+         THEN 'n/a'
+    ELSE TRIM(REPLACE(REPLACE(REPLACE(cntry, '\t', ''), '\n', ''), '\r', ''))
+  END AS cntry
 FROM DataWarehouse_bronze.erp_loc_a101;
+
 
 TRUNCATE TABLE DataWarehouse_silver.erp_px_cat_g1v2;
 
