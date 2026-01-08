@@ -110,6 +110,7 @@ TRUNCATE TABLE DataWarehouse_silver.erp_loc_a101;
 INSERT INTO DataWarehouse_silver.erp_loc_a101 (cid,cntry)
 
 SELECT DISTINCT
+  REPLACE(cid, '-', '') AS cid, 
   CASE 
     WHEN UPPER(TRIM(REPLACE(REPLACE(REPLACE(cntry, '\t', ''), '\n', ''), '\r', ''))) = 'DE' 
          THEN 'Germany'
