@@ -2,7 +2,7 @@
 
 -- the queries here are related to the Bronze/Silver/Gold Datawarehouse built within the same project.
  
--- Data Analysis consists in distinct steps hereon performed and described:
+-- Data Exploration consists in distinct steps hereon performed and described:
 
 /* 
 ===============================================================================

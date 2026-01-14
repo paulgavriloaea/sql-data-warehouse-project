@@ -1,5 +1,5 @@
--- this is the second test script in continuation to Part_1.sql
--- it focuses on advanced data analytics
+-- this is the second test script in continuation to data_exploration.sql
+-- it focuses on advanced data analytics as described below
 
 
 
