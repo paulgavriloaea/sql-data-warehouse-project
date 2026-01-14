@@ -50,6 +50,13 @@ Develop SQL-based analytics to deliver detailed insights into:
 - **Product Performance**
 - **Sales Trends**
 
+The data exploration and analysis is performed on the dataset available in the Data Warehouse. 
+
+In addition, two reports are generated which gather and segment essential data +
+extract valuable KPIs and aggregated metrics related to
+the sales, customers and products in the DataWarehouse.
+
+
 ## 📂 Repository Instructions
 
 To construct the Data Warehouse easily, run the create_DataWarehouse.py python script inside the scripts/ directory.
@@ -62,11 +69,11 @@ data-warehouse-project/
 │   ├── source_crm/
 │   │   ├── cust_info.csv
 │   │   ├── prd_info.csv
-│   │   ├── sales_details.csv
+│   │   └── sales_details.csv
 │   ├── source_erp/
 │   │   ├── CUST_AZ12.csv
 │   │   ├── LOC_A101.csv
-│   │   ├── PX_CAT_G1V2.csv
+│   │   └── PX_CAT_G1V2.csv
 ├── docs/                               # Project documentation and architecture details
 │   ├── etl.png                         # Png showing all different techniques and methods of ETL
 │   ├── data_architecture.png           # Png file shows the project's architecture
@@ -78,11 +85,16 @@ data-warehouse-project/
 │   ├── data_layers.pdf                 # shows in more detail the medallion architecture
 ├── scripts/                            # SQL scripts for ETL and transformations
 │   ├── init_database.sql               # SQL for creating the structure of the DataWarehouse
-│   ├── create_DataWarehouse.py         # python script used to run all the internal SQL scripts in bronze/ silver/ and gold/ directories.
+│   ├── create_DataWarehouse.py         # python script used to run all the internal SQL scripts in bronze/ silver/ gold/ and data_analysis/ directories.
 │   ├── data_checks.sql                 # SQL script containing  some queries I used to test the quality of the loaded data, this script is not actively used by the DataWarehouse.
 │   ├── bronze/                         # Scripts for extracting and loading raw data
 │   ├── silver/                         # Scripts for cleaning and transforming data
 │   ├── gold/                           # Scripts for creating analytical models
+│   └── data_analysis/                  # Scripts for extracting business insights from the data warehouse
+│       ├── customer_report.sql         # Reports on: total sales, total orders, quantity purchased, recency (months since last order), average order value, average monthly spend
+│       └── product_report.sql          # Reports on: total orders, total customers, total products sold, recency, average order revenue (AOR), average monthly revenue
+│       └── data_exploration.sql        # Performs data exploration in terms of dimensions, measures, data range, ranking and grouping data by specifid dimensions
+│       └── advanced_data_analysis.sql  # Performs change/time and cummulative analysis of the data, checks the performance or metrics across dimensions and time periods, segments data
 ├── tests/                              # Test scripts and quality files
 │
 ├── README.md                           # Project overview and instructions
