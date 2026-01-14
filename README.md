@@ -59,7 +59,7 @@ the sales, customers and products in the DataWarehouse.
 
 ## 📂 Repository Instructions
 
-To construct the Data Warehouse easily, run the create_DataWarehouse.py python script inside the scripts/ directory.
+To construct the Data Warehouse and build Data Analysis reports easily, run the create_DW_and_build_reports.py python script inside the scripts/ directory.
 
 ## 📂 Repository Structure
 ```
