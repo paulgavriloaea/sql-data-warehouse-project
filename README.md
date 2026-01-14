@@ -85,7 +85,7 @@ data-warehouse-project/
 │   ├── data_layers.pdf                 # shows in more detail the medallion architecture
 ├── scripts/                            # SQL scripts for ETL and transformations
 │   ├── init_database.sql               # SQL for creating the structure of the DataWarehouse
-│   ├── create_DataWarehouse.py         # python script used to run all the internal SQL scripts in bronze/ silver/ gold/ and data_analysis/ directories.
+│   ├── create_DW_and_build_reports.py         # python script used to run all the internal SQL scripts in bronze/ silver/ gold/ and data_analysis/ directories.
 │   ├── data_checks.sql                 # SQL script containing  some queries I used to test the quality of the loaded data, this script is not actively used by the DataWarehouse.
 │   ├── bronze/                         # Scripts for extracting and loading raw data
 │   ├── silver/                         # Scripts for cleaning and transforming data
